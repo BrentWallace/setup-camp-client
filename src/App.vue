@@ -21,5 +21,6 @@ export default {
 <style scoped>
 html {
   scroll-behavior: smooth;
+  height:100%;
 }
 </style>

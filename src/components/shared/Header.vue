@@ -5,9 +5,9 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">Explore</b-nav-item>
-        <b-nav-item href="">Adventures</b-nav-item>
-        <b-nav-item href="">Gear</b-nav-item>
+        <b-nav-item :to="'explore'">Explore</b-nav-item>
+        <b-nav-item :to="'adventures'">Adventures</b-nav-item>
+        <b-nav-item :to="'gear'">Gear</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
