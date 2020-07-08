@@ -1,11 +1,15 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h1 class="h1">This is the Footer</h1>
-      </div>
-    </div>
-  </div>
+  <b-container fluid class="bg-dark text-light">
+    <b-container>
+      <b-row>
+        <b-col>
+          <p class="my-4">
+            Footer content here
+          </p>
+        </b-col>
+      </b-row>
+    </b-container>
+  </b-container>
 </template>
 
 <script>

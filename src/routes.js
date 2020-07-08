@@ -3,9 +3,11 @@ import UserStart from './components/user/UserStart.vue'
 import UserDetail from './components/user/UserDetail.vue'
 import UserEdit from './components/user/UserEdit.vue'
 import Home from './pages/Home.vue'
+import Signup from './pages/Signup.vue'
 
 export const routes = [
     { path: '/', component: Home, name: 'home' },
+    { path: '/signup', component: Signup, name: 'signup' },
     {
         path: '/user', component: User, children: [
             { path: '', component: UserStart },
@@ -13,6 +15,5 @@ export const routes = [
             { path: ':id/edit', component: UserEdit, props: true, name: 'userEdit' },
         ]
     },
-    { path: '/redirect-me', redirect: { name: 'home' } },
-    { path: '*', redirect: '/' }
+    { path: '*', redirect: '/' },
 ];
