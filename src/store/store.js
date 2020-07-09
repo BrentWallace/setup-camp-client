@@ -5,12 +5,10 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        loggedIn: false
+        loggedIn: false,
     },
     getters: {
-        getLoginStatus(state) {
-            return state.loggedIn;
-        },
+        getLoginStatus: state => state.loggedIn,
     },
     mutations: {
         loginUser(state) {
@@ -26,6 +24,6 @@ export const store = new Vuex.Store({
         },
         logoutUser(context) {
             context.commit('logoutUser');
-        }
+        },
     }
 })

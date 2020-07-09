@@ -30,25 +30,30 @@
 
 <script>
 export default {
-    data() {
+  data() {
     return {
       regions: [
         { name: "West", image: "west.jpg", link: "/explore/west" },
-        { name: "Southwest", image: "southwest.jpg", link: "/explore/southwest" },
+        {
+          name: "Southwest",
+          image: "southwest.jpg",
+          link: "/explore/southwest"
+        },
         { name: "Midwest", image: "midwest.jpg", link: "/explore/midwest" },
         { name: "South", image: "south.jpg", link: "/explore/south" },
-        { name: "Northeast", image: "northeast.jpg", link: "/explore/northeast" },
+        {
+          name: "Northeast",
+          image: "northeast.jpg",
+          link: "/explore/northeast"
+        },
         { name: "Canada", image: "canada.jpg", link: "/explore/canada" }
       ]
     };
   }
-}
+};
 </script>
 
 <style scoped>
-.menu-padding {
-  padding-top: 80px;
-}
 .label-depth {
   position: relative;
   top: 30%;
@@ -62,5 +67,8 @@ export default {
   left: 0;
   top: 0;
   z-index: 0;
+}
+.jumbotron {
+  height:500px;
 }
 </style>

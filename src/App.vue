@@ -18,9 +18,24 @@ export default {
 };
 </script>
 
-<style scoped>
-html {
+<style>
+html, body {
   scroll-behavior: smooth;
-  height:100%;
+  height: 100%;
+}
+.menu-padding {
+  padding-top: 180px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
+  font-family: latex-top, sans-serif;
 }
 </style>
