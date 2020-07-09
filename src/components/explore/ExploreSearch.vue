@@ -5,15 +5,17 @@
         <b-form-group id="state-filter" label="Search by State">
           <b-form-input v-model="filters.state" trim></b-form-input>
         </b-form-group>
-        <b-button variant="primary" @click="fetchCampgroundSearchResults">Search</b-button>
+        <b-button variant="primary" @click="fetchCampgroundSearchResults(this.filters)">Search</b-button>
         <hr>
         <p class="text-center">or</p>
         <hr>
-        <b-form-group>
+        <b-form-group label="Enter an address">
           <b-form-input v-model="geocoderSearch"></b-form-input>
         </b-form-group>
+        <b-form-group label="Enter a search radius">
+          <b-form-input v-model="geocoderRadius"></b-form-input>
+        </b-form-group>
         <b-button variant="primary" @click="geocode(geocoderSearch)">Search</b-button>
-        {{ this.geocoderResults }}
       </b-col>
     </b-row>
     <hr />
@@ -47,22 +49,24 @@ export default {
   data() {
     return {
       filters: {
-        state: ""
+        state: "",
+        coordinates: {}
       },
       campgroundSearchResults: [],
       resultsLoading: false,
       geocoderSearch: '',
-      geocoderResults: '',
+      geocoderRadius: '',
+      geocoderResults: {},
     };
   },
   methods: {
-    async fetchCampgroundSearchResults() {
+    async fetchCampgroundSearchResults(filters) {
       this.resultsLoading = true;
 
       let queryString = "";
 
-      if (this.filters.state) {
-        queryString = `state=${this.filters.state}`;
+      if (filters.state) {
+        queryString = `state=${filters.state}`;
       }
 
       const formattedURL = `http://localhost:3000/campgrounds?${queryString}`;
@@ -73,8 +77,12 @@ export default {
       this.campgroundSearchResults = parsedResults;
     },
     async geocode(location) {
-      this.geocoderResults = await geocoder(location);
-      console.log(this.geocoderResults)
+      const geocoderResults = await geocoder(location);
+      this.filters.coordinates = {
+        lng: geocoderResults.results[0].geometry.location.lng,
+        lat: geocoderResults.results[0].geometry.location.lat
+      }
+      console.log(this.filters.coordinates)
     }
   },
 };
