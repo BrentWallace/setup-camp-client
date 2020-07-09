@@ -7,6 +7,8 @@ import Signup from './pages/Signup.vue'
 import Login from './pages/Login.vue'
 import Adventures from './pages/Adventures.vue'
 import Explore from './pages/Explore.vue'
+import ExploreStart from './components/explore/ExploreStart'
+import ExploreRegion from './components/explore/ExploreRegion.vue'
 import Gear from './pages/Gear.vue'
 
 export const routes = [
@@ -20,8 +22,14 @@ export const routes = [
             { path: ':id/edit', component: UserEdit, props: true, name: 'userEdit' },
         ]
     },
-    { path: '/explore', component: Explore, name: 'explore' },
+    { 
+        path: '/explore', component: Explore, children: [
+            { path: '', component: ExploreStart, name: 'explore' },
+            { path: ':region', component: ExploreRegion, name: 'exploreRegion', props: true },
+        ]
+    },
     { path: '/adventures', component: Adventures, name: 'adventures' },
     { path: '/gear', component: Gear, name: 'gear' },
+    { path: '/createAdventure', component: Home, name:'createAdventure' },
     { path: '*', redirect: '/' },
 ];

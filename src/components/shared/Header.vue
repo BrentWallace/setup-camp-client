@@ -5,29 +5,42 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item :to="'explore'">Explore</b-nav-item>
-        <b-nav-item :to="'adventures'">Adventures</b-nav-item>
-        <b-nav-item :to="'gear'">Gear</b-nav-item>
+        <b-nav-item :to="'/explore'">Explore</b-nav-item>
+        <b-nav-item :to="'/adventures'">Adventures</b-nav-item>
+        <b-nav-item :to="'/gear'">Gear</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown right>
+        <b-nav-item-dropdown right v-if="loginStatus">
           <!-- Using 'button-content' slot -->
           <template v-slot:button-content>
             <b-avatar class="mr-2"></b-avatar><em>User</em>
           </template>
           <b-dropdown-item href="#">Profile</b-dropdown-item>
           <b-dropdown-item>Friends</b-dropdown-item>
-          <b-dropdown-item href="#">Create a New Adventure</b-dropdown-item>
+          <b-dropdown-item :to="'/createAdventure'">Create a New Adventure</b-dropdown-item>
+          <b-dropdown-item @click="logoutButton">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item v-else :to="'/login'">Login</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    loginStatus() {
+      return this.$store.state.loggedIn
+    }
+  },
+  methods: {
+    logoutButton() {
+      this.$store.dispatch('logoutUser');
+    }
+  }
+};
 </script>
 
 <style scoped>

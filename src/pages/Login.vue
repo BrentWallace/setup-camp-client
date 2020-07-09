@@ -35,6 +35,7 @@ export default {
         login() {
             const bodyContent = document.querySelector('#body-content');
             bodyContent.innerHTML = '<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>'
+            this.$store.dispatch('loginUser');
             setTimeout(() => {
                 bodyContent.innerHTML = `<p class="display-4">Success!</p><p>User logged in with the following:</p><ul class="list-group"><li class="list-group-item"><strong>name:</strong> ${this.user.name}</li><li class="list-group-item"><strong>email:</strong> ${this.user.email}</li></ul>`
             }, 1000);

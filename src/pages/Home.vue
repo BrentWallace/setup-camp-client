@@ -16,7 +16,7 @@
       <b-row>
         <b-col>
           <h1 class="display-4 text-center mb-4" id="scroll-target">What is Setup.Camp?</h1>
-          <p class="mb-4 pb-4">Have you ever tried to coordinate a group of people for a camping trip or other outdoor adventure? Setup.Camp was created to help those brave souls taking on that task with a collection of tools to help them keep track of who's bringing the extra sleeping bags, and explain how to get to the trailhead for the zillionth time!</p>
+          <p class="mb-4 pb-4 text-center">Have you ever tried to coordinate a group of people for a camping trip or other outdoor adventure? Setup.Camp was created to help those brave souls taking on that task with a collection of tools to help them keep track of who's bringing the extra sleeping bags, and explain how to get to the trailhead for the zillionth time!</p>
         </b-col>
       </b-row>
     </b-container>
