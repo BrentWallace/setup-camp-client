@@ -1,21 +1,16 @@
 <template>
-<b-container fluid>
-    <b-row>
-        <b-col>
-            <p class="display-1 menu-padding text-center">The Gear Page</p>
-        </b-col>
-    </b-row>
-</b-container>
+  <router-view></router-view>
 </template>
 
 <script>
-export default {
-    
-}
+export default {};
 </script>
 
 <style scoped>
 .menu-padding {
-    padding-top:80px;
+  padding-top: 80px;
+}
+.jumbotron {
+    height:500px;
 }
 </style>

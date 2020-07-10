@@ -6,10 +6,12 @@ import Home from './pages/Home.vue'
 import Signup from './pages/Signup.vue'
 import Login from './pages/Login.vue'
 import Adventures from './pages/Adventures.vue'
+import AdventuresStart from './components/adventures/AdventuresStart.vue'
 import Explore from './pages/Explore.vue'
 import ExploreStart from './components/explore/ExploreStart'
 import ExploreRegion from './components/explore/ExploreRegion.vue'
 import Gear from './pages/Gear.vue'
+import GearStart from './components/gear/GearStart.vue'
 
 export const routes = [
     { path: '/', component: Home, name: 'home' },
@@ -28,8 +30,16 @@ export const routes = [
             { path: ':region', component: ExploreRegion, name: 'exploreRegion', props: true },
         ]
     },
-    { path: '/adventures', component: Adventures, name: 'adventures' },
-    { path: '/gear', component: Gear, name: 'gear' },
+    { 
+        path: '/adventures', component: Adventures, children: [
+            { path: '', component: AdventuresStart, name: 'adventures' },
+        ]
+    },
+    { 
+        path: '/gear', component: Gear, children: [
+            { path: '', component: GearStart, name: 'gear' },
+        ]
+    },
     { path: '/createAdventure', component: Home, name:'createAdventure' },
     { path: '*', redirect: '/' },
 ];

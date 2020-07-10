@@ -1,11 +1,5 @@
 <template>
-  <b-container fluid>
-    <b-row>
-      <b-col>
-          <p class="display-1 menu-padding text-center">The Adventures Page</p>
-      </b-col>
-    </b-row>
-  </b-container>
+  <router-view></router-view>
 </template>
 
 <script>

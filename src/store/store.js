@@ -20,7 +20,9 @@ export const store = new Vuex.Store({
     },
     actions: {
         loginUser(context) {
-            context.commit('loginUser');
+            setTimeout(() => {
+                context.commit('loginUser');
+            }, 1000)
         },
         logoutUser(context) {
             context.commit('logoutUser');
