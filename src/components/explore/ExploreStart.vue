@@ -10,6 +10,12 @@
     </b-jumbotron>
     <b-container>
       <b-row>
+        <b-col><h1 class="display-4 text-center my4">Explore a location</h1></b-col>
+      </b-row>
+      <app-explore-address-search></app-explore-address-search>
+      <p class="text-center display-4">or</p>
+      <hr />
+      <b-row>
         <b-col>
           <h1 class="display-4 text-center my-4">Explore by Region</h1>
         </b-col>
@@ -29,7 +35,12 @@
 </template>
 
 <script>
+import ExploreAddressSearch from './ExploreAddressSearch.vue'
+
 export default {
+  components: {
+    appExploreAddressSearch: ExploreAddressSearch,
+  },
   data() {
     return {
       regions: [

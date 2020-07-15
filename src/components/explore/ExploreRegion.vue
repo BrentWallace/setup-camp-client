@@ -8,17 +8,17 @@
     >
       <h1 class="display-3">Explore: {{ region.charAt(0).toUpperCase() + region.slice(1) }}</h1>
     </b-jumbotron>
-    <app-explore-search :region="this.region"></app-explore-search>
+    <app-explore-state-search :region="this.region"></app-explore-state-search>
   </div>
 </template>
 
 <script>
-import ExploreSearch from './ExploreSearch.vue'
+import ExploreStateSearch from './ExploreStateSearch.vue'
 
 export default {
   props: ["region"],
   components: {
-    appExploreSearch: ExploreSearch,
+    appExploreStateSearch: ExploreStateSearch,
   }
 };
 </script>
