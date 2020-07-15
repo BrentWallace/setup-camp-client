@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     logoutButton() {
-      this.$store.dispatch("logoutUser", this.$store.getters.getUser);
+      this.$store.dispatch("logoutUser", this.$store.getters.getToken);
       this.$router.push('home');
     }
   }

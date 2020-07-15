@@ -42,14 +42,21 @@ export const store = new Vuex.Store({
       });
       commit('loginUser', response)
     },
-    async logoutUser({ commit }, userData) {
-      const response = await Axios({
-        method: 'post',
-        url: '/users/logout',
-        data: userData,
-        headers: { 'Content-Type': 'application/json' },
-      })
-      commit('logoutUser', response);
+    async logoutUser({ commit, state }) {
+      try {
+        const response = await Axios({
+          method: 'post',
+          url: '/users/logout',
+          //data: userData,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${state.token}`
+          },
+        })
+        commit('logoutUser', response);
+      } catch (e) {
+        console.log(e)
+      }
     },
     async signupUser({ commit }, userData) {
       const response = await Axios({
