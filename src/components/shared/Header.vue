@@ -38,7 +38,8 @@ export default {
   },
   methods: {
     logoutButton() {
-      this.$store.dispatch("logoutUser");
+      this.$store.dispatch("logoutUser", this.$store.getters.getUser);
+      this.$router.push('home');
     }
   }
 };

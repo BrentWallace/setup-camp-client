@@ -7,7 +7,8 @@
       class="vh-100 text-center d-flex flex-column align-items-center justify-content-center"
     >
       <b-img class="my-4 img-responsive" src="/setup-camp-logo.png" fluid />
-      <b-button variant="outline-light" size="lg" :to="'/signup'">Get Started</b-button>
+      <b-button variant="outline-light" size="lg" :to="'/explore'" v-if="this.$store.getters.getLoginStatus">Find your next adventure!</b-button>
+      <b-button variant="outline-light" size="lg" :to="'/signup'" v-else>Get Started</b-button>
       <video class="background" src="video.mp4" playsinline muted autoplay loop></video>
       <b-button variant="outline-light" @click="scrollDown" class="scroll-down my-4">&darr;</b-button>
     </b-jumbotron>

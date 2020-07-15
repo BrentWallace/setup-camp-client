@@ -1,31 +1,64 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from 'axios'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
-    state: {
-        loggedIn: false,
+  state: {
+    loggedIn: false,
+    token: null,
+    user: null,
+  },
+  getters: {
+    getLoginStatus: state => state.loggedIn,
+    getToken: state => state.token,
+    getUser: state => state.user,
+  },
+  mutations: {
+    loginUser(state, payload) {
+      state.loggedIn = true;
+      state.token = payload.data.token;
+      state.user = payload.data.user;
     },
-    getters: {
-        getLoginStatus: state => state.loggedIn,
+    logoutUser(state) {
+      state.loggedIn = false;
+      state.token = null;
+      state.user = null;
     },
-    mutations: {
-        loginUser(state) {
-            state.loggedIn = true
-        },
-        logoutUser(state) {
-            state.loggedIn = false
-        },
-    },
-    actions: {
-        loginUser(context) {
-            setTimeout(() => {
-                context.commit('loginUser');
-            }, 1000)
-        },
-        logoutUser(context) {
-            context.commit('logoutUser');
-        },
+    signupUser(state, payload) {
+      state.loggedIn = true;
+      state.token = payload.data.token;
+      state.user = payload.data.user;
     }
+  },
+  actions: {
+    async loginUser({ commit }, userData) {
+      const response = await Axios({
+        method: 'post',
+        url: `/users/login`,
+        data: userData,
+        headers: { 'Content-Type': 'application/json' },
+      });
+      commit('loginUser', response)
+    },
+    async logoutUser({ commit }, userData) {
+      const response = await Axios({
+        method: 'post',
+        url: '/users/logout',
+        data: userData,
+        headers: { 'Content-Type': 'application/json' },
+      })
+      commit('logoutUser', response);
+    },
+    async signupUser({ commit }, userData) {
+      const response = await Axios({
+        method: 'post',
+        url: '/users',
+        data: userData,
+        headers: { 'Content-Type': 'application/json' },
+      });
+      commit('signupUser', response)
+    }
+  }
 })
